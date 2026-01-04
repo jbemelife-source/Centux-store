@@ -1,17 +1,17 @@
 
-// Global State
+// Items
 let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 let discount = 0;
 let isLoggedIn = localStorage.getItem('token') ? true : false;
 let products = [
     { id: 1, title: 'Zomax Catier Watch', price: 36000, image: 'Catier Watch', imageUrl: './Assets/Watch3.JPG', description: 'Catier Watch.', rating: '★★★★★' },
-    { id: 2, title: 'Zomax SMART IT-67', price: 39000, image: '🔊 Bluetooth Speaker', imageUrl: './assets/20d599a0-6086-4f76-8749-3be3301832a8.jpg', description: 'A combination of smart glass,smart watch,lipstick,AirPod and 5 unique different straps     Smart Watch features include:   *bluetooth camera   *bluetooth music  *weather  *blood pressure  *stop watch *flashlight  *Breathing  *calculator  *Heart rate  *blood oxygen monitoring  *Do not disturb  *siri  *settings  *sedentary reminder  *sleep monitoring e.t.c', rating: '★★★★☆' },
-    { id: 3, title: 'Zomax Glossy Shoe', price: 25000, image: 'Glossy Shoe', imageUrl: './Assets/Shoe8.JPG', description: 'Simple Ladies Glossy Shoe.', rating: '★★★★★', sizes: [36,37,38,39,40,41,42] },
-    { id: 4, title: 'Zomax Wireless Earbuds Pro', price: 35000, image: '🎧 Wireless Earbuds', imageUrl: './assets/product-4.svg', description: 'Noise-cancelling earbuds with long battery life.', rating: '★★★★☆' },
-    { id: 5, title: 'Zomax Power Bank 20000mAh', price: 18000, image: '🔋 Power Bank 20K', imageUrl: './assets/product-5.svg', description: 'High-capacity power bank with fast charge.', rating: '★★★★★' },
-    { id: 6, title: 'Zomax Gaming Headset RGB', price: 42000, image: '🎮 Gaming Headset', imageUrl: './assets/product-6.svg', description: 'Comfortable headset with surround sound.', rating: '★★★★☆' },
-    { id: 7, title: 'Zomax Home Theater 5.1', price: 95000, image: '🏠 Home Theater', imageUrl: './assets/product-7.svg', description: 'Full 5.1 home theater system for cinema sound.', rating: '★★★★★' },
-    { id: 8, title: 'Zomax LED Strip Lights', price: 15000, image: '💡 LED Strips', imageUrl: './assets/product-8.svg', description: 'RGB LED strips with remote and app control.', rating: '★★★★☆' }
+    { id: 2, title: 'Zomax SMART IT-67', price: 39000, image: 'Zomax Watch', imageUrl: 'Assets/20d599a0-6086-4f76-8749-3be3301832a8.jpg', description: 'A combination of smart glass,smart watch,lipstick,AirPod and 5 unique different straps     Smart Watch features include:   *bluetooth camera   *bluetooth music  *weather  *blood pressure  *stop watch *flashlight  *Breathing  *calculator  *Heart rate  *blood oxygen monitoring  *Do not disturb  *siri  *settings  *sedentary reminder  *sleep monitoring e.t.c', rating: '★★★★☆' },
+    { id: 3, title: 'Zomax Glossy Shoe', price: 25000, image: 'Glossy Shoe', imageUrl: './Assets/Shoe8.JPG', description: 'Simple Ladies Glossy Shoe.', rating: '★★★★★', sizes: [36, 37, 38, 39, 40, 41, 42] },
+    { id: 4, title: 'Zomax Sports Slide Shoe', price: 10500, image: 'Sports Slide', imageUrl: 'Assets/Sports Slide.JPG', description: 'Low Noise-Steps with long lasting expand.', rating: '★★★★☆', sizes: [41, 42, 43, 44, 45] },
+    { id: 5, title: 'Zomax Simple Glossy shoe', price: 15000, image: 'Glossy Shoe', imageUrl: 'Assets/Simple Glossy.JPG', description: 'High-capacity power bank with fast charge.', rating: '★★★★★', sizes: [38, 39, 40, 41, 42] },
+    { id: 6, title: 'Zomax Off- white Luxury slide', price: 37000, image: 'Slippers', imageUrl: 'Assets/Off-white Luxury Slide.JPG', description: 'Off- white luxury slide slippers', rating: '★★★★☆', sizes: [40, 41, 42, 43, 44, 45, 46] },
+    { id: 7, title: 'Zomax Lifter Slides', price: 26000, image: 'Slippers', imageUrl: 'Assets/Lifter.JPG', description: 'Female lifter slide slippers (Black).', rating: '★★★★★', sizes: [37, 38, 39, 40, 41, 42] },
+    { id: 8, title: 'Zomax Rolex Watch', price: 20000, image: 'Gold Watch', imageUrl: 'Assets/Gold watch.JPG', description: 'Original Non-Tarnished Gold Rolex Watch', rating: '★★★★☆' }
 ];
 
 // Initialize
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isLoggedIn) document.getElementById('loginBtn').textContent = 'Account';
 });
 
-// Ensure cart items have imageUrl and description (handles older saved carts)
+// Cart items image URL
 function normalizeCart() {
     if (!Array.isArray(cart)) cart = [];
     cart = cart.map(item => {
@@ -42,7 +42,7 @@ function normalizeCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// PWA
+// Logins
 let deferredPrompt;
 function initPWA() {
     window.addEventListener('beforeinstallprompt', (e) => {
